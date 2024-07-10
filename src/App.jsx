@@ -36,11 +36,20 @@ function App() {
   
   console.log(isConnected)
 
+function handleButtonSubmit() {
+
+
+socket.emit('hello', 'world')
+
+}
+
+
+
   return (
     
     <>
     <h1>
-      Y
+      <button  onClick={handleButtonSubmit}></button>
     </h1>
     </>
   )
