@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { socket } from './socket';
 
+import TextInput from './components/TextInput';
+
 import './App.css'
 
 function App() {
@@ -12,6 +14,7 @@ function App() {
   useEffect(() => {
     function onConnect() {
       setIsConnected(true);
+      console.log('connected')
     }
 
     function onDisconnect() {
@@ -34,12 +37,12 @@ function App() {
   }, []);
 
   
-  console.log(isConnected)
+ 
 
 function handleButtonSubmit() {
 
 
-socket.emit('hello', 'world')
+socket.emit('message', 'world')
 
 }
 
@@ -48,9 +51,13 @@ socket.emit('hello', 'world')
   return (
     
     <>
-    <h1>
-      <button  onClick={handleButtonSubmit}></button>
-    </h1>
+
+
+
+
+
+    
+  <TextInput handleButtonSubmit= {handleButtonSubmit}/>
     </>
   )
 }
