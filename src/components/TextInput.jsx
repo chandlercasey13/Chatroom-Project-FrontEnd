@@ -13,23 +13,33 @@ const [messageLog, setMessageLog] = useState([])
 function handleTextInput (event) {
 
 setTextInputData({...textInputData, [event.target.name]: event.target.value })
-console.log(textInputData)
+
 }
 
 function handleButtonSubmit(e) {
     e.preventDefault();
     
     socket.emit('message', textInputData.textInput)
+    setMessageLog([...messageLog, textInputData.textInput])
     setTextInputData({textInput: ''})
     
     }
 
-    console.log(textInputData.textInput)
+    console.log(messageLog)
 return (
 
     <>
 
+<ul>
+{messageLog.map((message,index) => (
 
+<li>
+    {message}
+</li>
+
+
+))}
+</ul>    
 
 
 
@@ -41,7 +51,7 @@ return (
 
 <label htmlFor="textInput"></label>
 
-<input id= 'textInput' name = 'textInput' type="text" value={textInputData.textInput} onChange={handleTextInput} ></input>
+<input id= 'textInput' name = 'textInput' type="text" value={textInputData.textInput} onChange={handleTextInput} required ></input>
 
     <button> <i className='bx bxs-send'></i></button>
     </form>
