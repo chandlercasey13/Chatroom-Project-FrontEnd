@@ -39,12 +39,7 @@ function App() {
   
  
 
-function handleButtonSubmit() {
 
-
-socket.emit('message', 'world')
-
-}
 
 
 
@@ -56,8 +51,8 @@ socket.emit('message', 'world')
 
 
 
-    
-  <TextInput handleButtonSubmit= {handleButtonSubmit}/>
+
+  <TextInput />
     </>
   )
 }

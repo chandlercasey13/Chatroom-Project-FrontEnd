@@ -1,16 +1,48 @@
-import React from "react";
-import 'boxicons'
+import React, { useState } from "react";
+import { socket } from '../socket';
+
 
 function TextInput({handleButtonSubmit}) {
 
+
+const [textInputData, setTextInputData] = useState('')
+
+function handleTextInput (event) {
+
+setTextInputData({...textInputData, [event.target.name]: event.target.value })
+}
+
+function handleButtonSubmit(e) {
+    e.preventDefault();
+    
+    socket.emit('message', 'world')
+    
+    }
+
 return (
 
-    
-<h1>
-<button  onClick={handleButtonSubmit}> <i class='bx bxs-send'></i></button>
-</h1>
+    <>
 
 
+
+
+
+
+
+
+
+    <form onSubmit={handleButtonSubmit}>
+
+<label htmlFor="textInput"></label>
+
+<input id= 'textInput' name = 'textInput' type="text" onChange={handleTextInput} value={textInputData.TextInput}></input>
+
+    <button> <i className='bx bxs-send'></i></button>
+    </form>
+
+
+
+</>
 )
 }
 
